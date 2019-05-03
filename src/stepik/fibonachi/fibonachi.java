@@ -18,29 +18,22 @@ public class fibonachi {
         int n = Integer.parseInt(bufferedReader.readLine());
 
         fibonachi fibonachi = new fibonachi();
-        System.out.println(arrayList.get(1));
+        //System.out.println(arrayList.get(1));
         System.out.println(fibonachi.calculate(n));
 
     }
 
-
-
     public int calculate(Integer n) {
 
-        if (n==1) {
-            return 1;
+//        double f = 1/Math.sqrt(5)* ( Math.pow(((1+Math.sqrt(5))/2),n) - Math.pow(((1-Math.sqrt(5))/2),n));
+//        return (int) f%10;
+
+        int f = 0;
+
+        for (int i=2; i<=n;i++) {
+            f = (arrayList.get(i-1))%10 + (arrayList.get(i-2))%10;
+            arrayList.add(f);
         }
-
-        else {
-            int k = 0;
-
-            for ( int i = 2; i<=n; i++) {
-
-                k = arrayList.get(i-1) + arrayList.get(i-2);
-                arrayList.add(k);
-
-            }
-            return k;
-        }
+        return f%10;
     }
 }
