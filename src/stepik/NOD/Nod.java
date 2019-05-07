@@ -6,25 +6,20 @@ public class Nod {
 
         System.out.println(a +" "+ b);
 
-        int max =  Math.max(a, b);
-        int min =  Math.min(a, b);
-
-
-
-
-        if (a!=b && a!=0 && b!=0) {
-            return calculate(min, max-min);
-        }
-        else if (b==0) {
+        if (a==0) {
             return b;
         }
-        else if (a==0) {
-            return a;
-        }
-        else {
+
+        if (b==0) {
             return a;
         }
 
+        if (a>=b) {
+            return calculate(a%b, b);
+        }
+        else {
+            return calculate(a, b%a);
+        }
 
     }
 
@@ -33,7 +28,7 @@ public class Nod {
         long start = System.currentTimeMillis();
 
         Nod nod = new Nod();
-        System.out.println(nod.calculate(12234234,234234234));
+        System.out.println(nod.calculate(12234234,23434));
 
         long finish = System.currentTimeMillis();
 
