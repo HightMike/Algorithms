@@ -4,24 +4,36 @@ public class Nod {
 
     private int calculate (int a , int b) {
 
+        System.out.println(a +" "+ b);
+
         int max =  Math.max(a, b);
+        int min =  Math.min(a, b);
 
-        int result = 0;
 
-        for (int i=1; i<=max; i++) {
-            if (a%i==0 && b%i==0) {
-                result = i;
-            }
+
+
+        if (a!=b && a!=0 && b!=0) {
+            return calculate(min, max-min);
+        }
+        else if (b==0) {
+            return b;
+        }
+        else if (a==0) {
+            return a;
+        }
+        else {
+            return a;
         }
 
-        return result;
+
     }
 
     public static void main(String[] args) {
+
         long start = System.currentTimeMillis();
 
         Nod nod = new Nod();
-        System.out.println(nod.calculate(1234234232,426423423));
+        System.out.println(nod.calculate(12234234,234234234));
 
         long finish = System.currentTimeMillis();
 
