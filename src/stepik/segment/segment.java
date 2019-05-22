@@ -25,35 +25,7 @@ public class segment {
             list.add(one);
             list.add(two);
         }
-
-
-
-        int n=0;
-
-        try {
-            int x=0;
-            while (x<first) {
-
-                if (n==2) {
-                    break;
-                }
-
-                choose(list,n);
-
-                x++;
-            }
-
-        } catch (Exception e) {
-            System.out.println(e.getStackTrace());
-        }
-
-//        3
-//        1 3
-//        2 5
-//        3 6
-
         System.out.println(list);
-        System.out.println(first-n);
     }
 
     public static void choose(List<Integer> list, Integer n) {
