@@ -1,47 +1,77 @@
 package stepik.segment;
 
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
-
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class segment {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int first = Integer.parseInt(bufferedReader.readLine());
-        int k=0;
-        List<Integer> list = new ArrayList<>();
+        int k = 0;
+        SortedMap<Integer, Integer> sortedMapL =  new TreeMap<>();
+        SortedMap<Integer, Integer> sortedMapR =  new TreeMap<>();
+        Integer b = 5;
+        int c = b+1;
 
-        while (k<first) {
+        SortedSet<Integer> setR = new TreeSet<>();
+
+
+        while (k < first) {
             k++;
             String str = bufferedReader.readLine();
             String[] seg = str.split(" ");
             int one = Integer.parseInt(seg[0]);
             int two = Integer.parseInt(seg[1]);
-            list.add(one);
-            list.add(two);
+            sortedMapL.put(one,k);
+            sortedMapR.put(two, k);
         }
-        System.out.println(list);
+        System.out.println(sortedMapL);
+        System.out.println(sortedMapR);
+
+        setR.addAll(sortedMapR.keySet());
+
+        try {
+            for (Map.Entry<Integer, Integer> mapR : sortedMapR.entrySet()) {
+                for (Map.Entry<Integer, Integer> mapL : sortedMapL.entrySet()) {
+                    if (mapR.getKey()>=mapL.getKey() && !mapR.getValue().equals(mapL.getValue())) {
+                        RemoveFromSet(setR, mapR.getKey());
+                    }
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        System.out.println(setR.size());
+        for (Integer integer:setR) {
+            System.out.print(integer+" ");
+        }
+
+
     }
 
-    public static void choose(List<Integer> list, Integer n) {
-        int i=1;
+    static void RemoveFromSet(SortedSet sortedSet, Integer integer) {
+            Iterator<Integer> iterator = sortedSet.iterator();
 
-        for (int l=1; l<list.size();l=l+2) {
+            while (iterator.hasNext()) {
+                Integer n = iterator.next();
+                if (integer.equals(n)) {
+                    iterator.next();
+                    iterator.remove();
+                }
+            }
+    }
 
-            if (list.get(i)>=list.get(l+1)) {
-                n++;
-
+    public static SortedMap RemoveWithValue(SortedMap<Integer, Integer> map, Integer integer) {
+        Iterator it = map.values().iterator();
+        while (it.hasNext()) {
+            Integer i = (int) it.next();
+            if (i.equals(integer)){
+                it.remove();
+                break;
             }
         }
-
+        return map;
     }
-
-
-
-
 }
