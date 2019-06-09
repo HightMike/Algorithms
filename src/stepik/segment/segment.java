@@ -16,6 +16,7 @@ public class segment {
         int c = b+1;
 
         SortedSet<Integer> setR = new TreeSet<>();
+        SortedSet<Integer> setL = new TreeSet<>();
 
 
         while (k < first) {
@@ -31,22 +32,31 @@ public class segment {
         System.out.println(sortedMapR);
 
         setR.addAll(sortedMapR.keySet());
+        setL.addAll(sortedMapL.keySet());
+
 
         try {
             for (Map.Entry<Integer, Integer> mapR : sortedMapR.entrySet()) {
                 for (Map.Entry<Integer, Integer> mapL : sortedMapL.entrySet()) {
                     if (mapR.getKey()>=mapL.getKey() && !mapR.getValue().equals(mapL.getValue())) {
-                        RemoveFromSet(setR, mapR.getKey());
+//                        RemoveWithValue(sortedMapL,mapL.getValue());
+//                        RemoveWithValue(sortedMapR,mapR.getValue()+1);
+                        //RemoveFromSet(setR, mapR.getKey());
                     }
+//                    else if (mapR.getValue().equals(mapL.getValue())){
+//                        RemoveWithValue(sortedMapL,mapL.getValue());
+//                    }
+
                 }
             }
         } catch (Exception e) {
 
         }
-        System.out.println(setR.size());
-        for (Integer integer:setR) {
-            System.out.print(integer+" ");
-        }
+        System.out.println(sortedMapR.keySet());
+//        System.out.println(setR.size());
+//        for (Integer integer:setR) {
+//            System.out.print(integer+" ");
+//        }
 
 
     }
@@ -63,7 +73,7 @@ public class segment {
             }
     }
 
-    public static SortedMap RemoveWithValue(SortedMap<Integer, Integer> map, Integer integer) {
+    public static void RemoveWithValue(SortedMap<Integer, Integer> map, Integer integer) {
         Iterator it = map.values().iterator();
         while (it.hasNext()) {
             Integer i = (int) it.next();
@@ -72,6 +82,5 @@ public class segment {
                 break;
             }
         }
-        return map;
     }
 }
