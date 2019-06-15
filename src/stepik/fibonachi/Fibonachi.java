@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class fibonachi {
+public class Fibonachi {
 
     static ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -17,7 +17,7 @@ public class fibonachi {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(bufferedReader.readLine());
 
-        fibonachi fibonachi = new fibonachi();
+        Fibonachi fibonachi = new Fibonachi();
         //System.out.println(arrayList.get(1));
         System.out.println(fibonachi.calculate(n));
 
